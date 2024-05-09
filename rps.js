@@ -12,7 +12,6 @@ function getComputerChoice(){
     }
 
 }
-console.log(getComputerChoice())
 
 //Prompt user for their choice
 function getHumanChoice(){
@@ -21,63 +20,83 @@ function getHumanChoice(){
 }
 
 
-function playRound(){
-    //Get the computers choice
-    let computersChoice = getComputerChoice()
-    //Get the players choice
-    let humansChoice = getHumanChoice()
-    //Determine who won
-    if (humansChoice == "rock") {
-        switch(computersChoice){
-            case "rock":
-                console.log("It's a Tie!")
-                break;
-            case "paper":
-                console.log("You lose!")
-                computerScore++ 
-                break;
-            case "scissors":
-                console.log("You win!")
-                humanScore++
-                break;
-        }
-    }
-    if (humansChoice == "paper") {
-        switch(computersChoice){
-            case "rock":
-                console.log("You lose!") 
-                break;
-            case "paper":
-                console.log("It's a Tie!") 
-                break;
-            case "scissors":
-                console.log("You win!")
-                humanScore++
 
-                break;
-        }
-    }
-    if (humansChoice == "scissors") {
-        switch(computersChoice){
-            case "rock":
-                console.log("You lose!")
-                computerScore++  
-                break;
-            
-            case "paper": 
-                console.log("You win!")
-                humanScore++
-                break;
-            
-            case "scissors":
-                console.log("It's a Tie!") 
-                break;
-        }
-    }
-}
-
+//Plays a game of rock paper scissors for a specified number of rounds
 function playGame() {
-
     let humanScore = 0;
     let computerScore = 0;
+    
+    const rounds = 5
+    for (let index = 0; index < 5; index++) {
+        playRound()
+    }
+
+    if(humanScore > computerScore) {
+        alert("YOU WON THE GAME!");
+    }
+
+    if(humanScore < computerScore) {
+        alert("You lost the game");
+    }
+
+    if (humanScore == computerScore){
+        alert("It was a tie?")
+    }
+
+    function playRound(){
+        //Get the computers choice
+        let computersChoice = getComputerChoice()
+        //Get the players choice
+        let humansChoice = getHumanChoice()
+        //Determine who won
+        if (humansChoice == "rock") {
+            switch(computersChoice){
+                case "rock":
+                    console.log("It's a Tie!")
+                    break;
+                case "paper":
+                    console.log("You lose " + computersChoice + " beats " + humansChoice)
+                    computerScore++ 
+                    break;
+                case "scissors":
+                    console.log("You win " + humansChoice + " beats " + computersChoice)
+                    humanScore++
+                    break;
+            }
+        }
+        if (humansChoice == "paper") {
+            switch(computersChoice){
+                case "rock":
+                    console.log("You lose " + computersChoice + " beats " + humansChoice)
+                    break;
+                case "paper":
+                    console.log("It's a Tie!") 
+                    break;
+                case "scissors":
+                    console.log("You win " + humansChoice + " beats " + computersChoice)
+                    humanScore++
+    
+                    break;
+            }
+        }
+        if (humansChoice == "scissors") {
+            switch(computersChoice){
+                case "rock":
+                    console.log("You lose " + computersChoice + " beats " + humansChoice)
+                    computerScore++  
+                    break;
+                
+                case "paper": 
+                    console.log("You win " + humansChoice + " beats " + computersChoice)
+                    humanScore++
+                    break;
+                
+                case "scissors":
+                    console.log("It's a Tie!") 
+                    break;
+            }
+        }
+    }
 }
+
+playGame();
